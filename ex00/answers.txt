@@ -1,0 +1,10 @@
+conda list x 2
+
+conda search numpy
+
+• Search for PyPI packages whose name or summary contains "tesseract":
+pip search tesseract (deprecated) 
+
+• Freeze the packages and their current versions in a requirements.txt file you have
+to turn-in:
+conda list --export > requirements.txt 
