@@ -1,10 +1,7 @@
+from datetime import datetime
+
 if __name__ == "__main__":
     t = (3,30,2019,9,25)
-    hour, minutes, year, month, day = t
-    date = ""
-    date += "{:0>2d}".format(month) + "/"
-    date += "{:0>2d}".format(day) + "/"
-    date += str(year) + " "
-    date += "{:0>2d}".format(hour) + ":"
-    date += "{:0>2d}".format(minutes)
-    print(date)
+    d = datetime(t[2], t[3], t[4], t[0], t[1])
+    s = d.strftime("%m/%d/%Y %H:%M")
+    print(s)
