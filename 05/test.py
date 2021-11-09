@@ -1,55 +1,32 @@
-class Account(object):
-	ID_COUNT = 1
-
-	def __init__(self, name, **kwargs):
-		self.id = self.ID_COUNT
-		self.name = name
-		self.__dict__.update(kwargs)
-		if hasattr(self, 'value'):
-			self.value = 0
-		Account.ID_COUNT += 1
-
-	def transfer(self, amount):
-		self.value += amount
-
-# in the_bank.py
-class Bank(object):
-	"""
-	The bank
-	"""
-	def __init__(self):
-		self.accounts = []
+# from the_bank import *
 
 
-	def add(self, account):
-		if (len(list(filter(lambda x: x.name == account.name, self.accounts))) == 0):
-			self.accounts.append(account)
-		else:
-			print("Another account with the same name already exists, the account was not added")
+# b = Bank()
+# a1 = Account("test")
+# a2 = Account("test")
+# b.add(a1)
+# b.add(a2)
 
+from the_bank import Account, Bank
 
-	def transfer(self, origin, dest, amount):
-		"""
-		@origin: int(id) or str(name) of the first account
-		@dest: int(id) or str(name) of the destination account
-		@amount: float(amount) amount to transfer
-		@return True if success, False if an error occured
-		"""
-		raise NotImplementedError
+if __name__ == "__main__":
+    bank = Bank()
+    bank.add(Account(
+        'Smith Jane',
+        zip='911-745',
+        value=1000.0,
+        bref='1044618427ff2782f0bbece0abd05f31'
+    ))
+    bank.add(Account(
+        'William John',
+        zip='100-064',
+        value=6460.0,
+        ref='58ba2b9954cd278eda8a84147ca73c87',
+        info=None,
+        other='This is the vice president of the corporation'
+    ))
 
-
-	def fix_account(self, account):
-		"""
-		fix the corrupted account
-		@account: int(id) or str(name) of the account
-		@return True if success, False if an error occured
-		"""
-		raise NotImplementedError
-		
-
-b = Bank()
-a1 = Account("test")
-a2 = Account("test")
-b.add(a1)
-b.add(a2)
-
+    if bank.transfer('William John', 'Smith Jane', 545.0) is False:
+        print('Failed')
+    else:
+        print('Success')

@@ -1,0 +1,3 @@
+make an __iter__ / __next__
+
+adding raise ThrowImplementedError in empty functions examples to show its possible and good practice
