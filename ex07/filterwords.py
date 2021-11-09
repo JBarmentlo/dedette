@@ -1,39 +1,35 @@
 import sys
 import string
 
-def is_long_enough(word, length):
-    return (len(word) > length)
-
-def remove_punctuaction(arg1):
-    no_punctuation = arg1.translate(str.maketrans('', '', string.punctuation))
-    return (no_punctuation)
-    
+def delete_punctuaction(arg1):
+    clean_str = arg1.translate(str.maketrans('', '', string.punctuation))
+    return (clean_str)
     
 
-def	filter_words(arg1, arg2):
+
+
+if __name__== "__main__" :
+    if (len(sys.argv) <= 2 or len(sys.argv) > 3):
+        print("ERROR")
+        exit()
+    arg1, arg2 = (sys.argv[1], sys.argv[2])
     try:
         int(arg1)
         print("ERROR")
-        return
+        exit()
     except:
         pass
     try:
         length = int(arg2)
     except:
         print("ERROR")
-        return
-    no_punctuation = remove_punctuaction(arg1)
-    words = no_punctuation.split()
-    to_keep = list(map(lambda x : is_long_enough(x, length), words))
+        exit()
+    clean_str = delete_punctuaction(arg1)
+    words = clean_str.split()
+    to_keep = list(map(lambda x : len(x) > length, words))
     final = []
     for i, w in enumerate(words):
         if (to_keep[i] == True):
             final.append(w)
     print(final)
-    return
-
-if __name__== "__main__" :
-    if (len(sys.argv) <= 2 or len(sys.argv) > 3):
-        print("ERROR")
-    else:
-        filter_words(sys.argv[1], sys.argv[2])
+    exit()

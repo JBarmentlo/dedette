@@ -1,7 +1,7 @@
 import sys
 
 if __name__ == "__main__":
-    MORSE_CODE_DICT = { 'A':'.-', 'B':'-...', 
+    DICO = { 'A':'.-', 'B':'-...', 
                     'C':'-.-.', 'D':'-..', 'E':'.', 
                     'F':'..-.', 'G':'--.', 'H':'....', 
                     'I':'..', 'J':'.---', 'K':'-.-', 
@@ -23,7 +23,7 @@ if __name__ == "__main__":
                 string += "/ "
                 continue
             try:
-                string += MORSE_CODE_DICT[c.upper()]
+                string += DICO[c.upper()]
                 if (j + 1 != len(arg)):
                     string += " "
             except:
